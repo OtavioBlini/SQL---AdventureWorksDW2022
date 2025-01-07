@@ -1,6 +1,9 @@
 USE AdventureWorksDW2022;
 
--- Est·tisticas B·sicas
+-- Estrutura Tabela FactInternetSales
+EXEC sp_help 'FactInternetSales';
+
+-- Est√°tisticas B√°sicas
 SELECT
 	COUNT(*) AS Total_registros,
 	SUM(SalesAmount) AS Soma,
@@ -12,7 +15,7 @@ SELECT
 	MAX(SalesAmount) - MIN(TotalProductCost) AS Amplitude
 FROM FactInternetSales; 
 
--- DistribuiÁ„o ao longo do tempo
+-- Distribui√ß√£o ao longo do tempo
 SELECT
 	YEAR(OrderDate) AS Ano,
 	COUNT(*) AS Total_registros,
@@ -49,7 +52,7 @@ DELETE
  WHERE YEAR(OrderDate) < 2011
     OR YEAR(OrderDate) > 2013;
 
--- VerificaÁ„o de Nulos nas Chaves Estrangeiras
+-- Verifica√ß√£o de Nulos nas Chaves Estrangeiras
 SELECT
 	SUM(CASE WHEN ProductKey IS NULL THEN 1 ELSE 0 END) AS ProductKey_Null,
 	SUM(CASE WHEN OrderDateKey IS NULL THEN 1 ELSE 0 END) AS OrderDateKey_Null,
@@ -78,7 +81,7 @@ SELECT
      SUM(CASE WHEN ProductSubcategoryKey IS NULL THEN 1 ELSE 0 END) AS ProductSubcategoryKey_Null
 FROM DimProduct;
 
--- Verificando possÌveis valores associados a nulos
+-- Verificando poss√≠veis valores associados a nulos
 WITH SubCategoriaNotNull (VendasNotNull) AS (
      SELECT SUM(S.SalesAmount) AS VendasNotNull
      FROM FactInternetSales S
