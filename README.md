@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/ff198041-dd9a-4fc6-b30a-56b4c4c93d80)# Introdução
+![image](https://github.com/user-attachments/assets/9269f45a-f5b9-454a-aee9-94220a3388f9)![image](https://github.com/user-attachments/assets/ff198041-dd9a-4fc6-b30a-56b4c4c93d80)# Introdução
 No cenário atual, em um mundo cada vez mais digital, o e-commerce se tornou peça-chave de muitas empresas. A analise de desempenho de vendas pela internet é fundamental para empresas que busquem otimizar seus resultados. Compreender o comportamento dos consumidores, desempenho dos produtos por região e sazonalidade permite que gestores vislumbrem oportunidades e tomem decisões orientadas por dados.
 
 O Data Warehouse ***AdventureWorksDW2022***, disponibilizado pela Microsoft, oferece um cenário ideal para o desenvolvimento de análises estratégicas e financeiras. Ele simula um ambiente corporativo com dados de uma empresa fictícia chamada Adventure Works, que opera no setor de varejo, com foco no e-commerce e operações globais.
@@ -122,5 +122,23 @@ Após realizar esta consulta, foi possível excluir os registros da tabela DimPr
 ![image](https://github.com/user-attachments/assets/f3033a98-d889-4620-a325-46c88f8f162e)
 ![image](https://github.com/user-attachments/assets/f2851748-3a85-48b7-8ce0-0548906e3379)
 
+### Crescimento Trimestral
+![image](https://github.com/user-attachments/assets/19828e98-e659-43ce-9329-737ac08d49ab)
+![image](https://github.com/user-attachments/assets/0a9dfa8b-5d8a-498b-be40-535eaeb5ac95)
 
+### Faturamento por Categoria
+![image](https://github.com/user-attachments/assets/b833bcf1-ac98-40a1-bf65-5084aa510cd7)
+![image](https://github.com/user-attachments/assets/9887b72b-e14a-4c8f-81ac-b9344395c29c)
+
+### Top 10 mais Vendidos
+![image](https://github.com/user-attachments/assets/bb9680d8-f8fa-4bd9-a692-e3604ac244e6)
+![image](https://github.com/user-attachments/assets/d0ac585f-d675-4531-9c9e-44f5b143146b)
+
+### Top 10 Vendidos em Conjunto
+![image](https://github.com/user-attachments/assets/c923829f-59c0-4754-9fc2-205c05d3a3a0)
+![image](https://github.com/user-attachments/assets/e3fe2471-5d78-4776-b3cd-4cc1ade1c81d)
+
+### Top 10 produtos Primeira Compra
+![image](https://github.com/user-attachments/assets/f1c4ce0d-ee27-473f-84be-6f7e89cc4c34)
+![image](https://github.com/user-attachments/assets/f56197a4-5845-4239-ad3e-d77ccc8debd9)
 
