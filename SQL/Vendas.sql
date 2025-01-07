@@ -1,6 +1,6 @@
 USE AdventureWorksDW2022;
 
--- Analise Exploratória Vendas
+-- Analise ExploratÃ³ria Vendas
 SELECT
 	FORMAT(COUNT(*), 'N0', 'pt-br') AS Qtd_Vendas,
 	FORMAT(SUM(SalesAmount), 'C0', 'pt-br') AS TotalVendas,
@@ -11,7 +11,7 @@ SELECT
 	FORMAT(SUM(SalesAmount) - SUM(TotalProductCost), 'C0', 'pt-br') AS Lucro
 FROM FactInternetSales;
 
--- Analise Exploratória Vendas por Ano
+-- Analise ExploratÃ³ria Vendas por Ano
 SELECT
 	YEAR(OrderDate) AS Ano,
 	FORMAT(COUNT(*), 'N0', 'pt-br') AS Qtd_Vendas,
@@ -87,7 +87,7 @@ GROUP BY P.EnglishProductName
 ORDER BY SUM(S.SalesAmount) DESC;
 
 -- Top 10 itens de vendas em conjunto
-SELECT
+SELECT TOP 10
 	P.EnglishProductName AS Produto,
 	COUNT(S.ProductKey) AS ItensConjunto
 FROM FactInternetSales S
@@ -113,7 +113,7 @@ WITH primeira_compra (CustomerKey, SalesOrderNumber, OrderDate, ProductKey,	RN) 
 		RANK() OVER (PARTITION BY CustomerKey ORDER BY OrderDate) AS RN
 	FROM FactInternetSales
 )
-SELECT
+SELECT TOP 10
 	P.EnglishProductName AS Produto,
 	COUNT(PC.ProductKey) AS PrimeiraCompra
 FROM primeira_compra PC
