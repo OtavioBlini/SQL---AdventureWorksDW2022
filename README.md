@@ -28,30 +28,24 @@ O modelo de dados do AdventureWorksDW2022, baseado na tabela FactInternetSales, 
 Nesse modelo, a tabela fato centraliza os dados, enquanto as tabelas dimensão fornecem informações descritivas. Além disso o modelo tem característica de relacionamento 1:N, indicando que cada registro das tabelas dimensão podem estar associadas a múltiplos registros da tabela fato.
 ![image](https://github.com/user-attachments/assets/e067f97d-1379-4cd5-90eb-0883e5329079)
 
-## Limpeza e tratamento de Dados
+## [Limpeza e tratamento de Dados](https://github.com/OtavioBlini/AdventureWorksDW2022/blob/main/SQL/Tratamento%20de%20Dados.sql)
 ### Estatísticas Descritivas
 ![image](https://github.com/user-attachments/assets/aa5717b8-ef55-4e05-8423-008ee026e740)
 ![image](https://github.com/user-attachments/assets/5b93cfb6-7143-4c35-884e-935c9ba60d90)
 
 A consulta tem como objetivo uma visão geral sobre os dados da coluna **SalesAmount.**
 
-**As colunas representam:**
+As colunas representam:
+*Total_registros (*Quantidade Total de Vendas*)
 
-**Total_registros** (*Quantidade Total de Vendas*)
+*Media (*Média das vendas*)
 
-**Media** (*Média das vendas*)
-
-**Soma** (*Soma das vendas*)
-
-**Valor_minimo** (*Valor mínimo de venda*)
-
-**Valor_maximo** (*Valor máximo de venda*)
-
-**Desvio_padrao** (*Desvio padrão*)
-
-**Variancia** (*Variância*)
-
-**Amplitude** (*Diferença entre o valor mínimo e máximo*)
+*Soma (*Soma das vendas*)
+*Valor_minimo (*Valor mínimo de venda*)
+-Valor_maximo (*Valor máximo de venda*)
+-Desvio_padrao (*Desvio padrão*)
+-Variancia (*Variância*)
+-Amplitude (*Diferença entre o valor mínimo e máximo*)
 
 ![image](https://github.com/user-attachments/assets/98f8c3b0-b1f7-41d5-8175-a09d212b393f)
 
@@ -119,7 +113,7 @@ Novamente, para garantir a integridade é necessário realizar a exclusão prime
 
 Após realizar esta consulta, foi possível excluir os registros da tabela DimProduct.
 
-## Análise de Vendas
+## [Análise de Vendas](https://github.com/OtavioBlini/AdventureWorksDW2022/blob/main/SQL/Vendas.sql)
 ### Analise Exploratória de Vendas
 ![image](https://github.com/user-attachments/assets/1793849b-7c96-4288-9bf7-dcb636bbeaba)
 
