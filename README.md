@@ -30,31 +30,34 @@ Nesse modelo, a tabela fato centraliza os dados, enquanto as tabelas dimensão f
 
 ## [Limpeza e tratamento de Dados](https://github.com/OtavioBlini/AdventureWorksDW2022/blob/main/SQL/Tratamento%20de%20Dados.sql)
 ### Estatísticas Descritivas
-![image](https://github.com/user-attachments/assets/aa5717b8-ef55-4e05-8423-008ee026e740)
+![image](https://github.com/user-attachments/assets/557525c3-be09-4e0d-8bb3-4f1a1f0dbbab)
+
 ![image](https://github.com/user-attachments/assets/5b93cfb6-7143-4c35-884e-935c9ba60d90)
 
 A consulta tem como objetivo uma visão geral sobre os dados da coluna **SalesAmount.**
 
 As colunas representam:
-*Total_registros (*Quantidade Total de Vendas*)
+Total_registros (*Quantidade Total de Vendas*)
+Media (*Média das vendas*)
+Soma (*Soma das vendas*)
+Valor_minimo (*Valor mínimo de venda*)
+Valor_maximo (*Valor máximo de venda*)
+Desvio_padrao (*Desvio padrão*)
+Variancia (*Variância*)
+Amplitude (*Diferença entre o valor mínimo e máximo*)
 
-*Media (*Média das vendas*)
+Analisando a distribuição ao longo do tempo.
 
-*Soma (*Soma das vendas*)
-*Valor_minimo (*Valor mínimo de venda*)
--Valor_maximo (*Valor máximo de venda*)
--Desvio_padrao (*Desvio padrão*)
--Variancia (*Variância*)
--Amplitude (*Diferença entre o valor mínimo e máximo*)
+![image](https://github.com/user-attachments/assets/498e179e-72bb-43fb-876c-061ff15ab4d4)
 
-![image](https://github.com/user-attachments/assets/98f8c3b0-b1f7-41d5-8175-a09d212b393f)
 
 ![image](https://github.com/user-attachments/assets/fe621e1a-f60e-4330-bc60-cc2fb24b20b2)
 
-Com esta consulta, se constata que os anos de 2010 e 2014 não possuem registros completos de vendas.
+Com esta consulta, se constata que os anos de 2010 e 2014 possuem alguma inconsistencia com os demais anos.
 
 ### Análise de Registros
-![image](https://github.com/user-attachments/assets/23b0a308-a527-499b-8ede-4b7e45c7c31a)
+![image](https://github.com/user-attachments/assets/e30a7c2e-4bcd-43a2-b15a-d6e139a7c85c)
+
 
 ![image](https://github.com/user-attachments/assets/214bb3f8-4e60-464c-8f5a-16942e4c53b8)
 
@@ -63,47 +66,45 @@ Com esta consulta, se constata que os anos de 2010 e 2014 não possuem registros
 ### Deletando Registros Incompletos de Venda
 Conforme constatado os anos de 2010 e 2014 não possuem registros completos anuais, sendo assim podendo impactar em possíveis análises futuras. Para garantir a consistência das analises a abordagem adotada foi de remoção integral dos valores, entretanto essa decisão se baseia no escopo proposto pelo projeto. Cada situação requer uma análise prévia e singular, a abordagem adotada satisfaz as necessidades imediatas, sem comprometer outras análises.
 
-![image](https://github.com/user-attachments/assets/1dc8893a-62d3-45f9-8073-5dbb06cfa76d)
+![image](https://github.com/user-attachments/assets/6d019de0-3ec6-4429-863c-975390573872)
 
 ![image](https://github.com/user-attachments/assets/9e2beb7c-9f11-4d80-b62b-1d4bd223f150)
 
-****A tabela ***FactInternetSalesReason*** possui uma chave estrangeira que faz referência a tabela *FactInternetSales*. Isso significa que não é possível excluir registros na tabela *FactInternetSales* enquanto houver registros associados na *FactInternetSalesReason*, devido à restrição de integridade.
+A tabela ***FactInternetSalesReason*** possui uma chave estrangeira que faz referência a tabela *FactInternetSales*. Isso significa que não é possível excluir registros na tabela *FactInternetSales* enquanto houver registros associados na *FactInternetSalesReason*, devido à restrição de integridade.
 
 Portanto, é necessário excluir os registros na tabela *FactInternetSalesReason* que estão relacionados aos registros da tabela *FactInternetSales*.
 
-![image](https://github.com/user-attachments/assets/1dae82b4-374f-415e-8673-3cf89be11996)
+![image](https://github.com/user-attachments/assets/ffe16b41-f817-4478-a414-c05ea080ec76)
 
 ![image](https://github.com/user-attachments/assets/af8caf38-cabb-4cc6-914f-057bf243d141)
 
 Após realizar esta consulta, foi possível excluir os registros da tabela FactInternetSales.
 
 ### Verificação de Nulos nas Chaves Estrangeiras
-![image](https://github.com/user-attachments/assets/909f0a75-d166-469c-9172-1546ec095272)
+![image](https://github.com/user-attachments/assets/b0460f46-6749-42be-97ef-1579dabff5e3)
 
 ![image](https://github.com/user-attachments/assets/27ce43dc-a183-463f-9cc1-c3dc3e25a858)
 
 Nenhuma Chave Estrangeira apresenta valores nulos.
 
 ### Valores Nulos Tabelas Relacionadas
-![image](https://github.com/user-attachments/assets/a26e341f-8878-4f6d-b5b8-071f5690121d)
+![image](https://github.com/user-attachments/assets/13efd8c9-d36e-457a-b9a8-2626860d3fdd)
 
 ![image](https://github.com/user-attachments/assets/8864f8fc-7941-4970-89e2-7f40fae9da09)
 
 A consulta indicou que o campo 'ProductSubcategoryKey' possui  209 registros com valores nulos. Esses valores podem indicar produtos que não estão corretamente associados a uma subcategoria
 A solução adotada nesse projeto foi de exclusão desses registros nulos, entretanto antes é necessário entender se há algum valor associado a venda com eles.
 
-![image](https://github.com/user-attachments/assets/bc29a77e-25b8-4af8-8739-c7d628542362)
+![image](https://github.com/user-attachments/assets/fe80c621-156e-4173-aea5-3df4c7d46acc)
 
 ![image](https://github.com/user-attachments/assets/12a9bf57-fa45-4226-aad8-ceb3e7026cbd)
-
 
 A consulta indicou que não há valores na coluna SalesAmount associados a produtos nulos. Sendo assim possível a exclusão desses registros sem nenhum prejuízo as análises.
 
 ### Deletando Registros Nulos
-![image](https://github.com/user-attachments/assets/f37c962c-cc42-4f0a-b542-2f488b17aa56)
+![image](https://github.com/user-attachments/assets/ef0fbee3-fe80-4672-aa9d-a404f3bcdee9)
 
 ![image](https://github.com/user-attachments/assets/b9240366-4e53-4e9c-a86d-bfd0b8f56ca8)
-
 
 Novamente, para garantir a integridade é necessário realizar a exclusão primeiro na tabela FactProductInventory.
 
