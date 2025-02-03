@@ -1,5 +1,5 @@
 # Introdução
-No cenário atual, em um mundo cada vez mais digital, o e-commerce se tornou peça-chave de muitas empresas. A analise de desempenho de vendas pela internet é fundamental para empresas que busquem otimizar seus resultados. Compreender o comportamento dos consumidores, desempenho dos produtos por região e sazonalidade permite que gestores vislumbrem oportunidades e tomem decisões orientadas por dados.
+No cenário atual, em um mundo cada vez mais digital, o e-commerce se tornou peça-chave de muitas empresas. A análise de desempenho de vendas pela internet é fundamental para empresas que busquem otimizar seus resultados. Compreender o comportamento dos consumidores, desempenho dos produtos por região e sazonalidade permite que gestores vislumbrem oportunidades e tomem decisões orientadas por dados.
 
 O Data Warehouse ***AdventureWorksDW2022***, disponibilizado pela Microsoft, oferece um cenário ideal para o desenvolvimento de análises estratégicas e financeiras. Ele simula um ambiente corporativo com dados de uma empresa fictícia chamada Adventure Works, que opera no setor de varejo, com foco no e-commerce e operações globais.
 
@@ -9,12 +9,12 @@ O Data Warehouse ***AdventureWorksDW2022***, disponibilizado pela Microsoft, ofe
 
 # Desenvolvimento
 ## Tabelas Fato
-O Data Warehouse AdventureWorksDW2022 é composto por tabelas do tipo fato que centralizam as informações e tabelas dimensão fornecem informações descritivas e categóricas que contextualizam as analises.
+O Data Warehouse AdventureWorksDW2022 é composto por tabelas do tipo fato que centralizam as informações e tabelas dimensão fornecem informações descritivas e categóricas que contextualizam as análises.
 
 As principais tabelas fato são: FactInternetSales e FactResellerSales.
 
 Sendo a primeira responsável pelas informações referentes ao canal de venda do e-commerce, enquanto a segunda é referente as vendas por revendedores.
-A analise ocorrerá na tabela FactInternetSales, uma vez que ela é a mais indicada para explorar os indicadores financeiros associados às vendas online.
+A análise ocorrerá na tabela FactInternetSales, uma vez que ela é a mais indicada para explorar os indicadores financeiros associados às vendas online.
 
 ## Estrutura da Tabela
 ![image](https://github.com/user-attachments/assets/37ec0f99-7c3c-4aac-a5f3-14eaaba3b789)
@@ -25,7 +25,7 @@ Essa consulta retorna informações detalhadas sobre a tabela ***FactInternetSal
 
 ## Relacionamentos
 O modelo de dados do AdventureWorksDW2022, baseado na tabela FactInternetSales, segue o esquema estrela (Star Schema).
-Nesse modelo, a tabela fato centraliza os dados, enquanto as tabelas dimensão fornecem informações descritivas. Além disso o modelo tem característica de relacionamento 1:N, indicando que cada registro das tabelas dimensão podem estar associadas a múltiplos registros da tabela fato.
+Nesse modelo, a tabela fato centraliza os dados, enquanto as tabelas dimensão fornecem informações descritivas. Além disso o modelo tem característica de relacionamento 1:N, indicando que cada registro das tabelas dimensão pode estar associadas a múltiplos registros da tabela fato.
 ![image](https://github.com/user-attachments/assets/e067f97d-1379-4cd5-90eb-0883e5329079)
 
 ## [Limpeza e tratamento de Dados](https://github.com/OtavioBlini/AdventureWorksDW2022/blob/main/SQL/Tratamento%20de%20Dados.sql)
@@ -38,12 +38,19 @@ A consulta tem como objetivo uma visão geral sobre os dados da coluna **SalesAm
 
 As colunas representam:
 Total_registros (*Quantidade Total de Vendas*)
+
 Media (*Média das vendas*)
+
 Soma (*Soma das vendas*)
+
 Valor_minimo (*Valor mínimo de venda*)
+
 Valor_maximo (*Valor máximo de venda*)
+
 Desvio_padrao (*Desvio padrão*)
+
 Variancia (*Variância*)
+
 Amplitude (*Diferença entre o valor mínimo e máximo*)
 
 Analisando a distribuição ao longo do tempo.
@@ -53,7 +60,7 @@ Analisando a distribuição ao longo do tempo.
 
 ![image](https://github.com/user-attachments/assets/fe621e1a-f60e-4330-bc60-cc2fb24b20b2)
 
-Com esta consulta, se constata que os anos de 2010 e 2014 possuem alguma inconsistencia com os demais anos.
+Com esta consulta, se constata que os anos de 2010 e 2014 possuem alguma inconsistência com os demais anos.
 
 ### Análise de Registros
 ![image](https://github.com/user-attachments/assets/e30a7c2e-4bcd-43a2-b15a-d6e139a7c85c)
@@ -120,7 +127,7 @@ Após realizar esta consulta, foi possível excluir os registros da tabela DimPr
 
 ![image](https://github.com/user-attachments/assets/e57c2368-097e-4fd9-a79a-f921568c9893)
 
-A consulta retorna valores basiladores a respeito do funcionamento do e-commerce da empresa.
+A consulta retorna valores balizadores a respeito do funcionamento do e-commerce da empresa.
 A quantidade total de vendas (Qtd_Vendas) com 58.414 vendas realizadas, obtendo um Faturamento de R$ 29.269.561, que gerou um lucro de R$ 12.037.482.
 A menor venda realizada foi de R$2 e a maior de R$ 3.578, obtendo um ticket médio (Ticket_Medio) de R$ 501 e um desvio padrão (Desvio_Padrao) de 939.
 
@@ -130,8 +137,7 @@ A menor venda realizada foi de R$2 e a maior de R$ 3.578, obtendo um ticket méd
 
 ![image](https://github.com/user-attachments/assets/461bd088-b606-4471-a748-5ea243b5f07f)
 
-Analisando anualmente é possível identificar pontos importantes sobre o e-commerce. O ano de 2013 se destacada dos demais, indicando um maior número de vendas (Qtd_Vendas) em relação aos demais anos, o faturamento e lucro são um destaque nessa série temporal.
-Observando o valor minimo de venda a partir de 2012 ele passa a ser R$ 2 indicando que a gama de produtos foi expandida, o que poderia ser uma explicação do motivo pelo qual há uma maior quantidade de vendas em relação ao periodo anterior de 2011, porém o faturamento é significativamente menor.
+Analisando anualmente é possível identificar pontos importantes sobre o e-commerce. O ano de 2013 se destacada dos demais, indicando um maior número de vendas (Qtd_Vendas) em relação aos demais anos, o faturamento e lucro são um destaque nessa série temporal. Observando o valor mínimo de venda a partir de 2012 ele passa a ser R$ 2 indicando que a gama de produtos foi expandida, o que poderia ser uma explicação do motivo pelo qual há uma maior quantidade de vendas em relação ao período anterior de 2011, porém o faturamento é significativamente menor.
 
 ### Crescimento Anual
 ![image](https://github.com/user-attachments/assets/f3033a98-d889-4620-a325-46c88f8f162e)
@@ -153,7 +159,7 @@ O faturamento entre os trimestres mostra o constante aumento em 2013, tendo como
 
 ![image](https://github.com/user-attachments/assets/9887b72b-e14a-4c8f-81ac-b9344395c29c)
 
-A categoria "Accessories" representa a maior margem de lucro com 63%. As demais categorias, "Bikes" e "Clothing" possuem uma marge de 40%.
+A categoria "Accessories" representa a maior margem de lucro com 63%. As demais categorias, "Bikes" e "Clothing" possuem uma margem de 40%.
 É interessante observar que dás três categorias o faturamento de "Bikes" representa um total de 97% do faturamento total.
 
 ### Top 10 mais Vendidos (maior faturamento)
@@ -168,7 +174,7 @@ Os dez produtos com maior faturamento na história da empresa são modelos de bi
 
 ![image](https://github.com/user-attachments/assets/e3fe2471-5d78-4776-b3cd-4cc1ade1c81d)
 
-Essa consula retorna produtos que são comprados junto de outros, bens complementares. O item com maior venda é a "Water Bottle - 30 oz."
+Essa consulta retorna produtos que são comprados junto de outros, bens complementares. O item com maior venda é a "Water Bottle - 30 oz."
 
 ### Top 10 produtos Primeira Compra
 ![image](https://github.com/user-attachments/assets/f1c4ce0d-ee27-473f-84be-6f7e89cc4c34)
