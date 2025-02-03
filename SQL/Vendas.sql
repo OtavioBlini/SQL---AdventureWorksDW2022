@@ -75,7 +75,7 @@ LEFT JOIN DimProductCategory AS C
 GROUP BY C.EnglishProductCategoryName
 ORDER BY 1;
 
--- Top 10 mais vendidos
+-- Top 10 mais vendidos por faturamento
 SELECT TOP 10
 	P.EnglishProductName AS Produtos,
 	FORMAT(SUM(S.SalesAmount), 'C0', 'pt-br') AS Faturamento,
