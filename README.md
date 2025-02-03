@@ -138,7 +138,8 @@ Observando o valor minimo de venda a partir de 2012 ele passa a ser R$ 2 indican
 
 ![image](https://github.com/user-attachments/assets/f2851748-3a85-48b7-8ce0-0548906e3379)
 
-O faturamento do ano de 2013 em relação ao periodo anterior foi de 180%.
+O faturamento do ano de 2012 apresenta uma queda em relação ao período anterior de 17%.
+Em 2013 o faturamento, em comparação com 2012, cresce aproximadamente 180%.
 
 ### Crescimento Trimestral
 ![image](https://github.com/user-attachments/assets/19828e98-e659-43ce-9329-737ac08d49ab)
@@ -152,19 +153,27 @@ O faturamento entre os trimestres mostra o constante aumento em 2013, tendo como
 
 ![image](https://github.com/user-attachments/assets/9887b72b-e14a-4c8f-81ac-b9344395c29c)
 
+A categoria "Accessories" representa a maior margem de lucro com 63%. As demais categorias, "Bikes" e "Clothing" possuem uma marge de 40%.
+É interessante observar que dás três categorias o faturamento de "Bikes" representa um total de 97% do faturamento total.
 
-### Top 10 mais Vendidos
+### Top 10 mais Vendidos (maior faturamento)
 ![image](https://github.com/user-attachments/assets/bb9680d8-f8fa-4bd9-a692-e3604ac244e6)
 
 ![image](https://github.com/user-attachments/assets/d0ac585f-d675-4531-9c9e-44f5b143146b)
+
+Os dez produtos com maior faturamento na história da empresa são modelos de bicicletas, sendo o mais popular a "Mountain-200" e a "Road-150".
 
 ### Top 10 Vendidos em Conjunto
 ![image](https://github.com/user-attachments/assets/c923829f-59c0-4754-9fc2-205c05d3a3a0)
 
 ![image](https://github.com/user-attachments/assets/e3fe2471-5d78-4776-b3cd-4cc1ade1c81d)
 
+Essa consula retorna produtos que são comprados junto de outros, bens complementares. O item com maior venda é a "Water Bottle - 30 oz."
+
 ### Top 10 produtos Primeira Compra
 ![image](https://github.com/user-attachments/assets/f1c4ce0d-ee27-473f-84be-6f7e89cc4c34)
 
 ![image](https://github.com/user-attachments/assets/f56197a4-5845-4239-ad3e-d77ccc8debd9)
+
+A consulta retorna os produtos que mais são vendidos na primeira compra do cliente. Observando os dez itens com maior saída na primeira compra se compreende que muitos clientes optam por adquirir itens da categoria "Accessories".
 
