@@ -115,30 +115,43 @@ Novamente, para garantir a integridade é necessário realizar a exclusão prime
 Após realizar esta consulta, foi possível excluir os registros da tabela DimProduct.
 
 ## [Análise de Vendas](https://github.com/OtavioBlini/AdventureWorksDW2022/blob/main/SQL/Vendas.sql)
-### Analise Exploratória de Vendas
-![image](https://github.com/user-attachments/assets/1793849b-7c96-4288-9bf7-dcb636bbeaba)
+### Análise Exploratória de Vendas
+![image](https://github.com/user-attachments/assets/5795a7df-5a61-4bad-8fa7-ab553dd202ac)
 
-![image](https://github.com/user-attachments/assets/804bdbc4-05f1-4ec4-b4fa-95a18ebec514)
+![image](https://github.com/user-attachments/assets/e57c2368-097e-4fd9-a79a-f921568c9893)
+
+A consulta retorna valores basiladores a respeito do funcionamento do e-commerce da empresa.
+A quantidade total de vendas (Qtd_Vendas) com 58.414 vendas realizadas, obtendo um Faturamento de R$ 29.269.561, que gerou um lucro de R$ 12.037.482.
+A menor venda realizada foi de R$2 e a maior de R$ 3.578, obtendo um ticket médio (Ticket_Medio) de R$ 501 e um desvio padrão (Desvio_Padrao) de 939.
+
 
 ### Análise de Vendas por Ano
-![image](https://github.com/user-attachments/assets/467e3655-a7e4-4dad-80e0-e7e1056bfd80)
+![image](https://github.com/user-attachments/assets/47dd089d-ee38-4297-b499-cc10a28e167b)
 
-![image](https://github.com/user-attachments/assets/2b0b9038-b0a3-4452-a261-363cd57e1e17)
+![image](https://github.com/user-attachments/assets/461bd088-b606-4471-a748-5ea243b5f07f)
+
+Analisando anualmente é possível identificar pontos importantes sobre o e-commerce. O ano de 2013 se destacada dos demais, indicando um maior número de vendas (Qtd_Vendas) em relação aos demais anos, o faturamento e lucro são um destaque nessa série temporal.
+Observando o valor minimo de venda a partir de 2012 ele passa a ser R$ 2 indicando que a gama de produtos foi expandida, o que poderia ser uma explicação do motivo pelo qual há uma maior quantidade de vendas em relação ao periodo anterior de 2011, porém o faturamento é significativamente menor.
 
 ### Crescimento Anual
 ![image](https://github.com/user-attachments/assets/f3033a98-d889-4620-a325-46c88f8f162e)
 
 ![image](https://github.com/user-attachments/assets/f2851748-3a85-48b7-8ce0-0548906e3379)
 
+O faturamento do ano de 2013 em relação ao periodo anterior foi de 180%.
+
 ### Crescimento Trimestral
 ![image](https://github.com/user-attachments/assets/19828e98-e659-43ce-9329-737ac08d49ab)
 
 ![image](https://github.com/user-attachments/assets/0a9dfa8b-5d8a-498b-be40-535eaeb5ac95)
 
+O faturamento entre os trimestres mostra o constante aumento em 2013, tendo como auge o quarto trimestre com crescimento de 214%.
+
 ### Faturamento por Categoria
 ![image](https://github.com/user-attachments/assets/b833bcf1-ac98-40a1-bf65-5084aa510cd7)
 
 ![image](https://github.com/user-attachments/assets/9887b72b-e14a-4c8f-81ac-b9344395c29c)
+
 
 ### Top 10 mais Vendidos
 ![image](https://github.com/user-attachments/assets/bb9680d8-f8fa-4bd9-a692-e3604ac244e6)
