@@ -4,31 +4,50 @@ USE AdventureWorksDW2022;
 EXEC sp_help 'FactInternetSales';
 
 -- Estátisticas Básicas
+
+-- PERCENTILE_CONT é windows function requerindo uma CTE.
+WITH MedianaCTE AS (
+    SELECT DISTINCT
+        PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY SalesAmount) OVER () AS Mediana
+    FROM FactInternetSales
+)
 SELECT
-	COUNT(*) AS Total_registros,
-	SUM(SalesAmount) AS Soma,
-	AVG(SalesAmount) AS Media,
-	MIN(SalesAmount) AS Valor_minimo,
-	MAX(SalesAmount) AS Valor_maximo,
-	ROUND(STDEVP(SalesAmount), 2) AS Desvio_Padrao,
-	ROUND(VARP(SalesAmount), 2) AS Variancia,
-	MAX(SalesAmount) - MIN(TotalProductCost) AS Amplitude
-FROM FactInternetSales; 
+    COUNT(*) AS Total_registros,
+    SUM(SalesAmount) AS Soma,
+    AVG(SalesAmount) AS Media,
+    (SELECT Mediana FROM MedianaCTE) AS Mediana, -- Inserção da CTE
+    MIN(SalesAmount) AS Valor_minimo,
+    MAX(SalesAmount) AS Valor_maximo,
+    ROUND(STDEVP(SalesAmount), 2) AS Desvio_Padrao,
+    ROUND(VARP(SalesAmount), 2) AS Variancia,
+    MAX(SalesAmount) - MIN(SalesAmount) AS Amplitude
+FROM FactInternetSales;
 
 -- Distribuição ao longo do tempo
+
+-- PERCENTILE_CONT é windows function requerindo uma CTE.
+WITH MedianaCTE AS (
+    SELECT DISTINCT
+        YEAR(OrderDate) AS Ano,
+        PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY SalesAmount) 
+            OVER (PARTITION BY YEAR(OrderDate)) AS Mediana -- Criar partições por ano
+    FROM FactInternetSales
+)
 SELECT
-	YEAR(OrderDate) AS Ano,
-	COUNT(*) AS Total_registros,
-	SUM(SalesAmount) AS Soma,
-	AVG(SalesAmount) AS Media,
-	MIN(SalesAmount) AS Valor_minimo,
-	MAX(SalesAmount) AS Valor_maximo,
-	ROUND(STDEVP(SalesAmount), 2) AS Desvio_Padrao,
-	ROUND(VARP(SalesAmount), 2) AS Variancia,
-	MAX(SalesAmount) - MIN(TotalProductCost) AS Amplitude
-FROM FactInternetSales
-GROUP BY YEAR(OrderDate)
-ORDER BY 1;
+    Ano,
+    COUNT(*) AS Total_registros,
+    SUM(SalesAmount) AS Soma,
+    AVG(SalesAmount) AS Media,
+    M.Mediana AS Mediana, -- Inserção da CTE
+    MIN(SalesAmount) AS Valor_minimo,
+    MAX(SalesAmount) AS Valor_maximo,
+    ROUND(STDEVP(SalesAmount), 2) AS Desvio_Padrao,
+    ROUND(VARP(SalesAmount), 2) AS Variancia,
+    MAX(SalesAmount) - MIN(SalesAmount) AS Amplitude
+FROM FactInternetSales S
+JOIN MedianaCTE M ON YEAR(S.OrderDate) = M.Ano
+GROUP BY Ano, M.Mediana
+ORDER BY Ano;
 
 -- Consulta Data
 SELECT
@@ -82,24 +101,30 @@ SELECT
 FROM DimProduct;
 
 -- Verificando possíveis valores associados a nulos
-WITH SubCategoriaNotNull (VendasNotNull) AS (
-     SELECT SUM(S.SalesAmount) AS VendasNotNull
-     FROM FactInternetSales S
-     FULL JOIN DimProduct AS P
-         ON S.ProductKey = P.ProductKey
-     WHERE P.ProductSubcategoryKey IS NOT NULL
-     ),
-SubCategoriaNull (VendasNull) AS (
-     SELECT SUM(S.SalesAmount) AS VendasNull
-     FROM FactInternetSales S
-     FULL JOIN DimProduct AS P
-         ON S.ProductKey = P.ProductKey
-     WHERE P.ProductSubcategoryKey IS NULL
-     )
+WITH SubCategoriaNotNull AS (
+    SELECT 
+        SUM(S.SalesAmount) AS VendasNotNull,
+        COUNT(*) AS TotalRegistrosNotNull
+    FROM FactInternetSales S
+    FULL JOIN DimProduct AS P
+        ON S.ProductKey = P.ProductKey
+    WHERE P.ProductSubcategoryKey IS NOT NULL
+),
+SubCategoriaNull AS (
+    SELECT 
+        SUM(S.SalesAmount) AS VendasNull,
+        COUNT(*) AS TotalRegistrosNull
+    FROM FactInternetSales S
+    FULL JOIN DimProduct AS P
+        ON S.ProductKey = P.ProductKey
+    WHERE P.ProductSubcategoryKey IS NULL
+)
 SELECT
-     VendasNotNull,
-     (SELECT * FROM SubCategoriaNull) AS VendasNull
-FROM SubCategoriaNotNull;
+    VendasNotNull,
+    TotalRegistrosNotNull,
+    VendasNull,
+    TotalRegistrosNull
+FROM SubCategoriaNotNull, SubCategoriaNull;
 
 -- Deletando Valores Nulos FactProductInventory
 DELETE
