@@ -1,9 +1,9 @@
 USE AdventureWorksDW2022;
 
--- Clientes por gênero.
+-- Clientes por gÃªnero.
 SELECT
 	COUNT(DISTINCT(C.CustomerKey)) AS 'Clientes',
-C.Gender AS 'Genero'
+	C.Gender AS 'Genero'
 FROM FactInternetSales S
 LEFT JOIN DimCustomer C
 ON S.CustomerKey = C.CustomerKey
@@ -11,7 +11,7 @@ GROUP BY C.Gender
 ORDER BY 1;
 
 
--- Clientes Faixa Etária.
+-- Clientes Faixa EtÃ¡ria.
 WITH FaixaEtariaClientes (CustomerKey, FaixaEtaria) AS (
 	SELECT
 		CustomerKey,
@@ -27,7 +27,7 @@ WITH FaixaEtariaClientes (CustomerKey, FaixaEtaria) AS (
 )
 SELECT
 	COUNT(DISTINCT(S.CustomerKey)) AS 'Clientes',
-	FaixaEtaria AS 'Faixa Etária'
+	FaixaEtaria AS 'Faixa EtÃ¡ria'
 FROM FactInternetSales S
 LEFT JOIN FaixaEtariaClientes F
 ON S.CustomerKey = F.CustomerKey
