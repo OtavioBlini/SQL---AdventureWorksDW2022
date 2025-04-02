@@ -1,7 +1,7 @@
 USE AdventureWorksDW2022;
 
--- Est·tisticas B·sicas
--- PERCENTILE_CONT È windows function requerindo uma CTE.
+-- Est√°tisticas B√°sicas
+-- PERCENTILE_CONT √© windows function requerindo uma CTE.
 WITH MedianaCTE AS (
     SELECT DISTINCT
         PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY SalesAmount) OVER () AS Mediana
@@ -10,7 +10,7 @@ WITH MedianaCTE AS (
 SELECT
     COUNT(*) AS Total_registros,
     SUM(SalesAmount) AS Soma,
-	(SELECT Mediana FROM MedianaCTE) AS Mediana, -- InserÁ„o da CTE
+	(SELECT Mediana FROM MedianaCTE) AS Mediana, -- Inser√ß√£o da CTE
     AVG(SalesAmount) AS Media,
     MIN(SalesAmount) AS Valor_minimo,
     MAX(SalesAmount) AS Valor_maximo,
@@ -19,25 +19,25 @@ SELECT
     MAX(SalesAmount) - MIN(SalesAmount) AS Amplitude
 FROM FactInternetSales;
 
--- DistribuiÁ„o ao longo do tempo.
--- PERCENTILE_CONT È windows function requerindo uma CTE.
+-- Distribui√ß√£o ao longo do tempo.
+-- PERCENTILE_CONT √© windows function requerindo uma CTE.
 WITH MedianaCTE(Ano, Mediana) AS (
 	SELECT DISTINCT
 		YEAR(OrderDate) AS Ano,
 		PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY SalesAmount) 
-			OVER (PARTITION BY YEAR(OrderDate)) AS Mediana -- Criar partiÁıes por ano
+			OVER (PARTITION BY YEAR(OrderDate)) AS Mediana -- Criar parti√ß√µes por ano
 	FROM FactInternetSales
 )
 SELECT
 	Ano,
 	COUNT(*) AS Total_registros,
 	SUM(S.SalesAmount) AS Soma,
-	M.Mediana AS Mediana, -- InserÁ„o da CTE
-	AVG(S.SalesAmount) AS TicketMÈdio,
-	MIN(S.SalesAmount) AS TicketMinÌmo,
+	M.Mediana AS Mediana, -- Inser√ß√£o da CTE
+	AVG(S.SalesAmount) AS TicketM√©dio,
+	MIN(S.SalesAmount) AS TicketMin√≠mo,
 	MAX(S.SalesAmount) AS TicketMaximo,
-	ROUND(STDEVP(S.SalesAmount), 2) AS Desvio_Padr„o,
-	ROUND(VARP(S.SalesAmount), 2) AS Vari‚ncia,
+	ROUND(STDEVP(S.SalesAmount), 2) AS Desvio_Padr√£o,
+	ROUND(VARP(S.SalesAmount), 2) AS Vari√¢ncia,
 	MAX(S.SalesAmount) - MIN(S.SalesAmount) AS Amplitude
 FROM FactInternetSales S
 JOIN MedianaCTE M ON YEAR(S.OrderDate) = M.Ano
