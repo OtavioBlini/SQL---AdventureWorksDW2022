@@ -89,40 +89,58 @@ Os dois países com maior participação nas vendas da empresa são Estados Unid
 
 Analisando os dois países mais importantes para o e-commerce se observa uma queda na receita durante o ano de 2012 e um crescimento acentuado em 2013, chegando ao patamar de 280%
 
-### Estados Unidos Trimestrais
+### Estados Unidos Trimestral
 ![image](https://github.com/user-attachments/assets/c9dc1efe-c445-4c3d-9141-93164c2b80c0)
 ![image](https://github.com/user-attachments/assets/9d79642e-e835-48f7-a010-dba7b65e4473)
+
+Analisando os trimestres dos Estados Unidos se verifica que a partir do segundo trimestre de 2012 ocorre uma queda nas Vendas que só é superada em 2013.
 
 ### Promoções
 ![image](https://github.com/user-attachments/assets/4c3f26a4-cd09-4463-8bff-356f840a857d)
 ![image](https://github.com/user-attachments/assets/80c9f6e8-bb5d-4ab4-9ad8-cda9b8ca73e9)
 
-## Clientes
+As vendas promocionais representam aproximidademente 4% das vendas totais, indicando que há um espaço para melhora.
+
+## [Clientes](https://github.com/OtavioBlini/SQL---AdventureWorksDW2022/blob/main/SQL/Clientes.sql)
 ### Gênero
-![image](https://github.com/user-attachments/assets/b2d85015-cadf-4d65-b805-985dfcddc636)
+![image](https://github.com/user-attachments/assets/4d965679-13ff-43bb-be23-86304ea252e4)
 ![image](https://github.com/user-attachments/assets/6a94f993-4cd7-4396-b58f-a274883812a3)
+
+A base de clientes é bem distribuída entre os gêneros Masculino e Feminino, sendo 51% e 49% respectivamente.
 
 ### Faixa Etária
 ![image](https://github.com/user-attachments/assets/5c744f60-0f5e-437e-b827-6ca28c5fb41f)
 ![image](https://github.com/user-attachments/assets/3869b60e-f4ec-44fa-ab4e-39cbd4e109c3)
 
+A faixa etária entre 30-44 e 45-59 representa aproximadamente 83% da base de clientes.
 
 ### Clientes novos por ano
 ![image](https://github.com/user-attachments/assets/17560028-b470-4a8b-bad9-cc736b1c3727)
 ![image](https://github.com/user-attachments/assets/e66ae888-0257-4be8-9be8-5c4879c82fd9)
 
-## Faturamento por categoria
+A base de clientes foi expandida em 2013 cerca de 288%.
+
+## [Faturamento por categoria](https://github.com/OtavioBlini/SQL---AdventureWorksDW2022/blob/main/SQL/Produtos.sql)
 ![image](https://github.com/user-attachments/assets/9769a4bf-8c59-40af-80fd-fde64b7437be)
 ![image](https://github.com/user-attachments/assets/9fde2649-63ce-4c10-9d3a-a9c5c7992603)
 
-### Top 5 mais vendidos
+A categoria "Accessories" representa a maior margem de lucro com 63%. As demais categorias, "Bikes" e "Clothing" possuem uma margem de 40%.
+É interessante observar que entre as categorias o faturamento de "Bikes" representa um total de 97% do faturamento total.
+
+### Top 5 faturamento
 ![image](https://github.com/user-attachments/assets/5a2c6b85-c9c0-45ec-b9c5-b0004cd1d66b)
 ![image](https://github.com/user-attachments/assets/837a14bb-cd4e-487d-bf3e-4037704b060c)
+
+Os produtos que elevaram o faturamento da empresa no e-commerce são modelos da Mountain-200.
 
 ### Top 5 produtos frequentemente comprados em conjunto
 ![image](https://github.com/user-attachments/assets/6d59c1b1-48bc-49fd-a005-256512a19d0d)
 ![image](https://github.com/user-attachments/assets/ebac3ac3-76ec-42af-8fe9-f8ae1a642e2e)
 
+Essa consulta retorna produtos que são comprados junto de outros, bens complementares.
+
 ### Top 5 produtos primeira compra
 ![image](https://github.com/user-attachments/assets/1f72354d-da43-4a71-8d31-7b4b938d7d63)
 ![image](https://github.com/user-attachments/assets/1b2f28cd-a9a1-4222-8f98-bab8299f96f8)
+
+Os produtos frequentemente escolhidos na primeira compra, ao comparar com os produtos que são comprados juntos indica que há uma possível relação entre eles. Mostrando que são produtos.
