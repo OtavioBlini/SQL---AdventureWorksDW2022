@@ -9,7 +9,7 @@ WITH MedianaCTE AS (
 )
 SELECT
     COUNT(*) AS Total_registros,
-    SUM(SalesAmount) AS Soma,
+    SUM(SalesAmount) AS Vendas,
 	(SELECT Mediana FROM MedianaCTE) AS Mediana, -- Inserção da CTE
     AVG(SalesAmount) AS Media,
     MIN(SalesAmount) AS Valor_minimo,
@@ -31,7 +31,7 @@ WITH MedianaCTE(Ano, Mediana) AS (
 SELECT
 	Ano,
 	COUNT(*) AS Total_registros,
-	SUM(S.SalesAmount) AS Soma,
+	SUM(S.SalesAmount) AS Vendas,
 	M.Mediana AS Mediana, -- Inserção da CTE
 	AVG(S.SalesAmount) AS TicketMédio,
 	MIN(S.SalesAmount) AS TicketMinímo,
