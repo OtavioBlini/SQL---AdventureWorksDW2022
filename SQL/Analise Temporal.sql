@@ -1,27 +1,27 @@
 USE AdventureWorksDW2022;
 
--- Estátisticas Básicas
+-- Análise temporal.
 -- PERCENTILE_CONT é windows function requerindo uma CTE.
-WITH MedianaCTE AS (
+WITH MedianaCTE (Mediana) AS (
     SELECT DISTINCT
         PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY SalesAmount) OVER () AS Mediana
     FROM FactInternetSales
 )
 SELECT
-    COUNT(*) AS Total_registros,
+    COUNT(*) AS Produtos,
     SUM(SalesAmount) AS Vendas,
 	(SELECT Mediana FROM MedianaCTE) AS Mediana, -- Inserção da CTE
-    AVG(SalesAmount) AS Media,
-    MIN(SalesAmount) AS Valor_minimo,
-    MAX(SalesAmount) AS Valor_maximo,
-    ROUND(STDEVP(SalesAmount), 2) AS Desvio_Padrao,
-    ROUND(VARP(SalesAmount), 2) AS Variancia,
+    MIN(SalesAmount) AS TicketMínimo,
+    AVG(SalesAmount) AS TicketMédio,
+    MAX(SalesAmount) AS TicketMáximo,
+    ROUND(STDEVP(SalesAmount), 2) AS DesvioPadrão,
+    ROUND(VARP(SalesAmount), 2) AS Variância,
     MAX(SalesAmount) - MIN(SalesAmount) AS Amplitude
 FROM FactInternetSales;
 
 -- Distribuição ao longo do tempo.
 -- PERCENTILE_CONT é windows function requerindo uma CTE.
-WITH MedianaCTE(Ano, Mediana) AS (
+WITH MedianaCTE (Ano, Mediana) AS (
 	SELECT DISTINCT
 		YEAR(OrderDate) AS Ano,
 		PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY SalesAmount) 
@@ -30,11 +30,11 @@ WITH MedianaCTE(Ano, Mediana) AS (
 )
 SELECT
 	Ano,
-	COUNT(*) AS Total_registros,
+	COUNT(*) AS Produtos,
 	SUM(S.SalesAmount) AS Vendas,
 	M.Mediana AS Mediana, -- Inserção da CTE
+	MIN(SalesAmount) AS TicketMínimo,
 	AVG(S.SalesAmount) AS TicketMédio,
-	MIN(S.SalesAmount) AS TicketMinímo,
 	MAX(S.SalesAmount) AS TicketMaximo,
 	ROUND(STDEVP(S.SalesAmount), 2) AS Desvio_Padrão,
 	ROUND(VARP(S.SalesAmount), 2) AS Variância,
