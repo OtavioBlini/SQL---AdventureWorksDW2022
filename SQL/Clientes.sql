@@ -3,7 +3,7 @@ USE AdventureWorksDW2022;
 -- Clientes por gênero.
 SELECT
 	COUNT(DISTINCT(C.CustomerKey)) AS clientes,
-C.Gender AS genero
+	C.Gender AS genero
 FROM FactInternetSales S
 LEFT JOIN DimCustomer C ON S.CustomerKey = C.CustomerKey
 GROUP BY C.Gender
