@@ -22,7 +22,7 @@ A análise ocorrerá utilizando a tabela [FactInternetSales](https://github.com/
 O modelo de dados do AdventureWorksDW2022, baseado na tabela FactInternetSales, segue o esquema estrela (Star Schema).
 Nesse modelo, a tabela fato centraliza os dados, enquanto as tabelas dimensão fornecem informações descritivas. Além disso o modelo tem característica de relacionamento 1:N, indicando que cada registro das tabelas dimensão pode estar associadas a múltiplos registros da tabela fato.
 
-## [Limpeza e tratamento de Dados](https://github.com/OtavioBlini/SQL---AdventureWorksDW2022/blob/main/SQL/Limpeza%20e%20Tratamento%20de%20Dados.sql)
+## [Limpeza e tratamento de Dados](https://github.com/OtavioBlini/SQL---AdventureWorksDW2022/blob/main/SQL/Tratamento%20de%20Dados.sql)
 ### Deletando Registros Incompletos de Venda
 ![image](https://github.com/user-attachments/assets/e30a7c2e-4bcd-43a2-b15a-d6e139a7c85c)
 ![image](https://github.com/user-attachments/assets/214bb3f8-4e60-464c-8f5a-16942e4c53b8)
@@ -139,3 +139,8 @@ Essa consulta retorna produtos que são comprados junto de outros, bens compleme
 ![image](https://github.com/user-attachments/assets/1b2f28cd-a9a1-4222-8f98-bab8299f96f8)
 
 Os produtos frequentemente escolhidos na primeira compra, ao comparar com os produtos que são comprados juntos indica que há uma possível relação entre eles. Mostrando que são produtos.
+
+# Conclusão
+A empresa Adventure Works possuí operações em seis países, dos quais dois se destacam no ambito de vendas. Estados Unidos e Austrália que juntos somam aproximadamente 63% das vendas da empresa. Analisando as compras realizadas em promoção fica evidente o baixo volume, cerca de apenas 4% das compras de todos os países foram utilizando descontos. Há uma oportunidade de aumentar o volume de vendas nos países ativando promoções mais atrativas aos clientes.
+A base de clientes se expandiu no ano de 2013 ultrapassando a marca dos 10 mil novos clientes, atualmente é bem distribuída entre os gêneros e a maior concentração de faixa etária está entre os 30-44 anos. A menor faixa etária está entre 19-29 anos, caso se invista em marketing para essa faixa etária há uma possibilidade de fidelização dos clientes pelos próximos anos.
+O carro chefe dos produtos é a categoria Bikes. Com as análises de produtos vendidos juntos e primeira majoritamente da caterogiria Accessories, que possuí uma margem elevada de 63%, promoções envolvendo esses itens podem fomentar novas compras e alavancar as vendas da empresa no e-commerce.
