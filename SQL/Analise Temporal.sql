@@ -2,44 +2,44 @@ USE AdventureWorksDW2022;
 
 -- Análise temporal.
 -- PERCENTILE_CONT é windows function requerindo uma CTE.
-WITH MedianaCTE (Mediana) AS (
+WITH MedianaCTE (mediana) AS (
     SELECT DISTINCT
-        PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY SalesAmount) OVER () AS Mediana
+        PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY SalesAmount) OVER () AS mediana
     FROM FactInternetSales
 )
 SELECT
-    COUNT(*) AS Produtos,
-    SUM(SalesAmount) AS Vendas,
-	(SELECT Mediana FROM MedianaCTE) AS Mediana, -- Inserção da CTE
-    MIN(SalesAmount) AS TicketMínimo,
-    AVG(SalesAmount) AS TicketMédio,
-    MAX(SalesAmount) AS TicketMáximo,
-    ROUND(STDEVP(SalesAmount), 2) AS DesvioPadrão,
-    ROUND(VARP(SalesAmount), 2) AS Variância,
-    MAX(SalesAmount) - MIN(SalesAmount) AS Amplitude
+    COUNT(*) AS produtos,
+    SUM(SalesAmount) AS vendas,
+	(SELECT Mediana FROM MedianaCTE) AS mediana, -- Inserção da CTE
+	MIN(SalesAmount) AS ticket_minimo,
+    AVG(SalesAmount) AS ticket_medio,
+    MAX(SalesAmount) AS ticket_maximo,
+    ROUND(STDEVP(SalesAmount), 2) AS desvio_padrao,
+    ROUND(VARP(SalesAmount), 2) AS variancia,
+    MAX(SalesAmount) - MIN(SalesAmount) AS amplitude
 FROM FactInternetSales;
 
 -- Distribuição ao longo do tempo.
 -- PERCENTILE_CONT é windows function requerindo uma CTE.
-WITH MedianaCTE (Ano, Mediana) AS (
+WITH MedianaCTE (ano, mediana) AS (
 	SELECT DISTINCT
-		YEAR(OrderDate) AS Ano,
+		YEAR(OrderDate) AS ano,
 		PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY SalesAmount) 
-			OVER (PARTITION BY YEAR(OrderDate)) AS Mediana -- Criar partições por ano
+			OVER (PARTITION BY YEAR(OrderDate)) AS mediana -- Criar partições por ano
 	FROM FactInternetSales
 )
 SELECT
-	Ano,
-	COUNT(*) AS Produtos,
-	SUM(S.SalesAmount) AS Vendas,
+	ano,
+	COUNT(*) AS produtos,
+	SUM(S.SalesAmount) AS vendas,
 	M.Mediana AS Mediana, -- Inserção da CTE
-	MIN(SalesAmount) AS TicketMínimo,
-	AVG(S.SalesAmount) AS TicketMédio,
-	MAX(S.SalesAmount) AS TicketMaximo,
-	ROUND(STDEVP(S.SalesAmount), 2) AS Desvio_Padrão,
-	ROUND(VARP(S.SalesAmount), 2) AS Variância,
-	MAX(S.SalesAmount) - MIN(S.SalesAmount) AS Amplitude
+	MIN(SalesAmount) AS ticket_minimo,
+	AVG(S.SalesAmount) AS ticket_medio,
+	MAX(S.SalesAmount) AS ticket_maximo,
+	ROUND(STDEVP(S.SalesAmount), 2) AS desvio_padrao,
+	ROUND(VARP(S.SalesAmount), 2) AS variancia,
+	MAX(S.SalesAmount) - MIN(S.SalesAmount) AS amplitude
 FROM FactInternetSales S
 JOIN MedianaCTE M ON YEAR(S.OrderDate) = M.Ano
-GROUP BY Ano, M.Mediana
+GROUP BY Ano, M.mediana
 ORDER BY Ano;
