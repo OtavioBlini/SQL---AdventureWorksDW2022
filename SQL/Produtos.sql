@@ -39,7 +39,7 @@ GROUP BY P.EnglishProductName
 ORDER BY 2 DESC;
 
 -- Top 5 produtos primeira compra.
-WITH ordem_compra (CustomerKey, SalesOrderNumber, OrderDate, ProductKey, RN) AS (
+WITH OrdemCompra (CustomerKey, SalesOrderNumber, OrderDate, ProductKey, RN) AS (
 	SELECT
 		CustomerKey,
 		SalesOrderNumber,
@@ -51,7 +51,7 @@ WITH ordem_compra (CustomerKey, SalesOrderNumber, OrderDate, ProductKey, RN) AS 
 SELECT TOP 5
 	P.EnglishProductName AS produto,
 	COUNT(OC.ProductKey) AS primeira_compra
-FROM ordem_compra OC
+FROM OrdemCompra OC
 LEFT JOIN DimProduct AS P ON OC.ProductKey = P.ProductKey
 WHERE RN = 1
 GROUP BY P.EnglishProductName
