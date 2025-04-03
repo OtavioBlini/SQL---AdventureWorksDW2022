@@ -30,14 +30,11 @@ Nesse modelo, a tabela fato centraliza os dados, enquanto as tabelas dimensão f
 Conforme constatado os anos de 2010 e 2014 não possuem registros completos anuais, sendo assim podendo impactar em possíveis análises futuras. Para garantir a consistência das analises a abordagem adotada foi de remoção integral dos valores, entretanto essa decisão se baseia no escopo proposto pelo projeto. Cada situação requer uma análise prévia e singular, a abordagem adotada satisfaz as necessidades imediatas, sem comprometer outras análises.
 
 ![image](https://github.com/user-attachments/assets/6d019de0-3ec6-4429-863c-975390573872)
-![image](https://github.com/user-attachments/assets/9e2beb7c-9f11-4d80-b62b-1d4bd223f150)
+![image](https://github.com/user-attachments/assets/ffe16b41-f817-4478-a414-c05ea080ec76)
 
 A tabela ***FactInternetSalesReason*** possui uma chave estrangeira que faz referência a tabela ***FactInternetSales***. Isso significa que não é possível excluir registros na tabela ***FactInternetSales*** enquanto houver registros associados na ***FactInternetSalesReason***, devido à restrição de integridade.
 
 Portanto, é necessário excluir os registros na tabela ***FactInternetSalesReason*** que estão relacionados aos registros da tabela *FactInternetSales*.
-
-![image](https://github.com/user-attachments/assets/ffe16b41-f817-4478-a414-c05ea080ec76)
-![image](https://github.com/user-attachments/assets/af8caf38-cabb-4cc6-914f-057bf243d141)
 
 Após realizar esta consulta, foi possível excluir os registros da tabela FactInternetSales.
 
@@ -61,12 +58,10 @@ A consulta indicou que não há valores na coluna SalesAmount associados a produ
 
 ### Deletando Registros Nulos
 ![image](https://github.com/user-attachments/assets/ef0fbee3-fe80-4672-aa9d-a404f3bcdee9)
-![image](https://github.com/user-attachments/assets/b9240366-4e53-4e9c-a86d-bfd0b8f56ca8)
+![image](https://github.com/user-attachments/assets/6925db6a-b618-497a-a7d4-c9de90b3b693)
 
 Novamente, para garantir a integridade é necessário realizar a exclusão primeiro na tabela FactProductInventory.
 
-![image](https://github.com/user-attachments/assets/6925db6a-b618-497a-a7d4-c9de90b3b693)
-![image](https://github.com/user-attachments/assets/521abeef-7015-4b64-aa9e-79cd3b28569b)
 
 Após realizar esta consulta, foi possível excluir os registros da tabela DimProduct.
 
