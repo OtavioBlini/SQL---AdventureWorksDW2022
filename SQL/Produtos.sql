@@ -23,7 +23,7 @@ LEFT JOIN DimProduct AS P ON S.ProductKey = P.ProductKey
 GROUP BY P.EnglishProductName
 ORDER BY SUM(S.SalesAmount) DESC;
 
--- Produtos em Pedidos com Múltiplos Itens.
+-- Top 5 compra conjunta.
 SELECT TOP 5
 	P.EnglishProductName AS produto,
 	COUNT(S.ProductKey) AS compra_conjunta
