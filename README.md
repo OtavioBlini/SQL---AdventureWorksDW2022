@@ -24,8 +24,8 @@ Nesse modelo, a tabela fato centraliza os dados, enquanto as tabelas dimensão f
 
 ## [Limpeza e tratamento de Dados](https://github.com/OtavioBlini/SQL---AdventureWorksDW2022/blob/main/SQL/Tratamento%20de%20Dados.sql)
 ### Deletando Registros Incompletos de Venda
-![image](https://github.com/user-attachments/assets/e30a7c2e-4bcd-43a2-b15a-d6e139a7c85c)
-![image](https://github.com/user-attachments/assets/214bb3f8-4e60-464c-8f5a-16942e4c53b8)
+![image](https://github.com/user-attachments/assets/fb3c59d7-5e17-46a7-a99f-38fec07c29c0)
+![image](https://github.com/user-attachments/assets/2390b843-cb1f-487b-beb8-f14eb48a81a3)
 
 Conforme constatado os anos de 2010 e 2014 não possuem registros completos anuais, sendo assim podendo impactar em possíveis análises futuras. Para garantir a consistência das analises a abordagem adotada foi de remoção integral dos valores, entretanto essa decisão se baseia no escopo proposto pelo projeto. Cada situação requer uma análise prévia e singular, a abordagem adotada satisfaz as necessidades imediatas, sem comprometer outras análises.
 
@@ -51,8 +51,8 @@ Nenhuma Chave Estrangeira apresenta valores nulos.
 A consulta indicou que o campo 'ProductSubcategoryKey' possui  209 registros com valores nulos. Esses valores podem indicar produtos que não estão corretamente associados a uma subcategoria
 A solução adotada nesse projeto foi de exclusão desses registros nulos, entretanto antes é necessário entender se há algum valor associado a venda com eles.
 
-![image](https://github.com/user-attachments/assets/fe80c621-156e-4173-aea5-3df4c7d46acc)
-![image](https://github.com/user-attachments/assets/12a9bf57-fa45-4226-aad8-ceb3e7026cbd)
+![image](https://github.com/user-attachments/assets/6c64308b-747b-4ab4-9c94-e17f8ec6822f)
+![image](https://github.com/user-attachments/assets/fba3ff0f-568f-4ef4-9c2c-50aa435ec1d9)
 
 A consulta indicou que não há valores na coluna SalesAmount associados a produtos nulos. Sendo assim possível a exclusão desses registros sem nenhum prejuízo as análises.
 
@@ -65,78 +65,77 @@ Novamente, para garantir a integridade é necessário realizar a exclusão prime
 
 Após realizar esta consulta, foi possível excluir os registros da tabela DimProduct.
 
-## [Análise Temporal](https://github.com/OtavioBlini/SQL---AdventureWorksDW2022/blob/main/SQL/Analise%20Temporal.sql)
-![image](https://github.com/user-attachments/assets/e116a681-9a92-478e-bfca-5e4e7ab36f98)
-![image](https://github.com/user-attachments/assets/0f4fdd89-23e6-4e51-8f2a-aaa17f5f0cdf)
-
+## [Análise Temporal](https://github.com/OtavioBlini/SQL---AdventureWorksDW2022/blob/main/SQL/An%C3%A1lise%20Temporal.sql)
+![image](https://github.com/user-attachments/assets/f3c67612-1332-4974-8000-9ad461bc0282)
+![image](https://github.com/user-attachments/assets/8e02e628-8b59-441f-8abf-6e573266eadc)
 
 Analisando anualmente é possível identificar pontos importantes sobre o e-commerce. O ano de 2013 se destacada dos demais, indicando um maior número de vendas em relação aos demais anos. Observando o valor mínimo de venda a partir de 2012 ele passa a ser R$ 2,29 indicando que a gama de produtos foi expandida, o que poderia ser uma explicação do motivo pelo qual há uma maior quantidade de registros de vendas em relação ao período anterior de 2011, porém o faturamento é significativamente menor.
 
 ## [Regiões](https://github.com/OtavioBlini/SQL---AdventureWorksDW2022/blob/main/SQL/Regi%C3%B5es.sql)
-![image](https://github.com/user-attachments/assets/f28c5b28-bf91-4351-8898-7498e9b804e2)
-![image](https://github.com/user-attachments/assets/49b279c0-7c87-4209-8833-9a4937397815)
+![image](https://github.com/user-attachments/assets/1c33827a-9983-47ad-ba2c-3f96d3bf592d)
+![image](https://github.com/user-attachments/assets/d14d494f-1f74-4678-a098-9b1e6877aeeb)
 
 Os dois países com maior participação nas vendas da empresa são Estados Unidos e Austrália, juntos somam aproximadamente 63% das vendas no e-commerce.
 
 ### Estados Unidos e Austrália
-![image](https://github.com/user-attachments/assets/68a418a7-f721-4281-8360-48aebd7fb7b1)
-![image](https://github.com/user-attachments/assets/348027fb-20e4-4ae6-a43f-8424c931ebe6)
+![image](https://github.com/user-attachments/assets/e412854d-c0d8-4b4d-b199-708f555feafa)
+![image](https://github.com/user-attachments/assets/b1486160-1426-4043-9115-546b603e3893)
 
 Analisando os dois países mais importantes para o e-commerce se observa uma queda na receita durante o ano de 2012 e um crescimento acentuado em 2013, chegando ao patamar de 280%
 
 ### Estados Unidos Trimestral
-![image](https://github.com/user-attachments/assets/c9dc1efe-c445-4c3d-9141-93164c2b80c0)
-![image](https://github.com/user-attachments/assets/9d79642e-e835-48f7-a010-dba7b65e4473)
+![image](https://github.com/user-attachments/assets/dab5d310-bc37-40e6-9886-bd79e9293582)
+![image](https://github.com/user-attachments/assets/0f865147-5b83-463e-9e1e-63486a48bff9)
 
 Analisando os trimestres dos Estados Unidos se verifica que a partir do segundo trimestre de 2012 ocorre uma queda nas Vendas que só é superada em 2013.
 
 ### Promoções
-![image](https://github.com/user-attachments/assets/4c3f26a4-cd09-4463-8bff-356f840a857d)
-![image](https://github.com/user-attachments/assets/80c9f6e8-bb5d-4ab4-9ad8-cda9b8ca73e9)
+![image](https://github.com/user-attachments/assets/ad92d1b1-699d-494d-b9aa-e1abad6c2cdb)
+![image](https://github.com/user-attachments/assets/6fdd94d7-2de7-4bde-a4c6-6c9146541466)
 
 As vendas promocionais representam aproximidademente 4% das vendas totais, indicando que há um espaço para melhora.
 
 ## [Clientes](https://github.com/OtavioBlini/SQL---AdventureWorksDW2022/blob/main/SQL/Clientes.sql)
 ### Gênero
-![image](https://github.com/user-attachments/assets/4d965679-13ff-43bb-be23-86304ea252e4)
-![image](https://github.com/user-attachments/assets/6a94f993-4cd7-4396-b58f-a274883812a3)
+![image](https://github.com/user-attachments/assets/f4fc0cd9-fe13-496a-86c1-1709d0ff0055)
+![image](https://github.com/user-attachments/assets/31faff53-d3e4-4feb-a7d9-ef34fdc87446)
 
 A base de clientes é bem distribuída entre os gêneros Masculino e Feminino, sendo 51% e 49% respectivamente.
 
 ### Faixa Etária
-![image](https://github.com/user-attachments/assets/5c744f60-0f5e-437e-b827-6ca28c5fb41f)
-![image](https://github.com/user-attachments/assets/3869b60e-f4ec-44fa-ab4e-39cbd4e109c3)
+![image](https://github.com/user-attachments/assets/a9486ae3-b624-4acf-a952-957bec214d75)
+![image](https://github.com/user-attachments/assets/fd6d4f40-218a-435d-aef9-e3f26d749bf0)
 
 A faixa etária entre 30-44 e 45-59 representa aproximadamente 83% da base de clientes.
 
 ### Clientes novos por ano
-![image](https://github.com/user-attachments/assets/17560028-b470-4a8b-bad9-cc736b1c3727)
-![image](https://github.com/user-attachments/assets/e66ae888-0257-4be8-9be8-5c4879c82fd9)
+![image](https://github.com/user-attachments/assets/994f15c6-f6cf-4f0e-a01a-6c75ece241a4)
+![image](https://github.com/user-attachments/assets/51a3f79e-ed03-47c6-8768-3821bba7c270)
 
 A base de clientes foi expandida em 2013 cerca de 288%.
 
-## [Faturamento por categoria](https://github.com/OtavioBlini/SQL---AdventureWorksDW2022/blob/main/SQL/Produtos.sql)
-![image](https://github.com/user-attachments/assets/9769a4bf-8c59-40af-80fd-fde64b7437be)
-![image](https://github.com/user-attachments/assets/9fde2649-63ce-4c10-9d3a-a9c5c7992603)
+## [Vendas por categoria](https://github.com/OtavioBlini/SQL---AdventureWorksDW2022/blob/main/SQL/Produtos.sql)
+![image](https://github.com/user-attachments/assets/2c2d7d87-e782-40a8-a701-b03b6161651d)
+![image](https://github.com/user-attachments/assets/484880af-5e3d-4ef5-8ae3-0c424659b8c4)
 
 A categoria "Accessories" representa a maior margem de lucro com 63%. As demais categorias, "Bikes" e "Clothing" possuem uma margem de 40%.
 É interessante observar que entre as categorias o faturamento de "Bikes" representa um total de 97% do faturamento total.
 
-### Top 5 faturamento
-![image](https://github.com/user-attachments/assets/5a2c6b85-c9c0-45ec-b9c5-b0004cd1d66b)
-![image](https://github.com/user-attachments/assets/837a14bb-cd4e-487d-bf3e-4037704b060c)
+### Top 5 produtos por venda
+![image](https://github.com/user-attachments/assets/817eb89a-1b95-4cc0-8eb4-0055ea4753f9)
+![image](https://github.com/user-attachments/assets/619b58f1-9ac0-4c62-bc60-021556e67c53)
 
 Os produtos que elevaram o faturamento da empresa no e-commerce são modelos da Mountain-200.
 
-### Top 5 produtos frequentemente comprados em conjunto
-![image](https://github.com/user-attachments/assets/6d59c1b1-48bc-49fd-a005-256512a19d0d)
-![image](https://github.com/user-attachments/assets/ebac3ac3-76ec-42af-8fe9-f8ae1a642e2e)
+### Top 5 produtos em compra conjunta
+![image](https://github.com/user-attachments/assets/c262760d-e361-4515-9155-2ca1d50f97fa)
+![image](https://github.com/user-attachments/assets/28b0cf0e-09bb-411f-a03d-ab9bbc006498)
 
 Essa consulta retorna produtos que são comprados junto de outros, bens complementares.
 
 ### Top 5 produtos primeira compra
-![image](https://github.com/user-attachments/assets/1f72354d-da43-4a71-8d31-7b4b938d7d63)
-![image](https://github.com/user-attachments/assets/1b2f28cd-a9a1-4222-8f98-bab8299f96f8)
+![image](https://github.com/user-attachments/assets/8887d5fc-ef57-4f74-9094-3054f70064a4)
+![image](https://github.com/user-attachments/assets/a085a2b9-910e-4a17-aedf-e25f9e64a200)
 
 Os produtos frequentemente escolhidos na primeira compra, ao comparar com os produtos que são comprados juntos indica que há uma possível relação entre eles. Mostrando que são produtos.
 
