@@ -1,6 +1,6 @@
 USE AdventureWorksDW2022;
 
--- Clientes por gênero.
+-- Clientes por genero.
 SELECT
 	COUNT(DISTINCT(C.CustomerKey)) AS clientes,
 	C.Gender AS genero
@@ -10,7 +10,7 @@ GROUP BY C.Gender
 ORDER BY 1;
 
 
--- Clientes Faixa Etária.
+-- Clientes Faixa Etaria.
 WITH FaixaEtariaClientes (CustomerKey, FaixaEtaria) AS (
 	SELECT
 		CustomerKey,
@@ -33,11 +33,19 @@ GROUP BY F.FaixaEtaria
 ORDER BY 2;
 
 -- Cliente novos por ano.
-SELECT 
-	YEAR(DateFirstPurchase) AS ano, 
-	COUNT(DISTINCT CustomerKey) AS clientes_novos
-FROM DimCustomer
-WHERE DateFirstPurchase IS NOT NULL 
-AND YEAR(DateFirstPurchase) NOT IN (2010, 2014)
-GROUP BY YEAR(DateFirstPurchase)
-ORDER BY Ano;
+WITH ClientesPrimeiraCompra (ano, cliente_id)  AS (
+	SELECT
+		DATEPART(YEAR, MIN(S.OrderDate)) AS ano,
+		S.CustomerKey AS cliente_id
+	FROM FactInternetSales S
+	GROUP BY S.CustomerKey
+)
+SELECT
+	ano,
+	COUNT(cliente_id) AS cliente_novo,
+	CASE
+		WHEN LAG(COUNT(cliente_id), 1) OVER(ORDER BY ano) IS NULL THEN 0
+		ELSE COUNT(cliente_id) - LAG(COUNT(cliente_id), 1) OVER(ORDER BY ano)
+	END AS cliente_deltaly
+FROM ClientesPrimeiraCompra
+GROUP BY ano;
