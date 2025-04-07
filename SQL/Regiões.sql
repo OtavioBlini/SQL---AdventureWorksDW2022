@@ -21,11 +21,12 @@ WITH VendaLY (pais, ano, venda, venda_ly) AS (
 			YEAR(S.OrderDate) AS ano,
 			SUM(S.SalesAmount) AS venda,
 			ISNULL(LAG(SUM(S.SalesAmount), 1) OVER(PARTITION BY T.SalesTerritoryCountry
-													ORDER BY YEAR(S.OrderDate)), 0) AS venda_ly
+													ORDER BY YEAR(S.OrderDate)), 0) AS venda_ly -- Retorna o ano anterior
 	FROM FactInternetSales S
 	LEFT JOIN DimSalesTerritory AS T ON S.SalesTerritoryKey = T.SalesTerritoryKey
 	WHERE T.SalesTerritoryCountry IN ('United States', 'Australia')
-	GROUP BY YEAR(S.OrderDate), T.SalesTerritoryCountry)
+	GROUP BY YEAR(S.OrderDate), T.SalesTerritoryCountry
+)
 SELECT 
 	ano,
 	pais,
@@ -44,11 +45,12 @@ WITH VendaLQ (ano, trimestre, venda, venda_lq) AS (
 		DATEPART(QUARTER, S.OrderDate) AS trimestre,
 		SUM(S.SalesAmount) AS venda,
 		ISNULL(LAG(SUM(S.SalesAmount)) OVER(PARTITION BY DATEPART(QUARTER, S.OrderDate)
-												ORDER BY YEAR(S.OrderDate)), 0) AS venda_lq
+												ORDER BY YEAR(S.OrderDate)), 0) AS venda_lq -- Retona o trimestre anterior
 	FROM FactInternetSales S
 	LEFT JOIN DimSalesTerritory AS T ON S.SalesTerritoryKey = T.SalesTerritoryKey
 	WHERE T.SalesTerritoryCountry = 'United States'
-	GROUP BY DATEPART(QUARTER, S.OrderDate), YEAR(S.OrderDate), T.SalesTerritoryCountry)
+	GROUP BY DATEPART(QUARTER, S.OrderDate), YEAR(S.OrderDate), T.SalesTerritoryCountry
+)
 SELECT
 	ano,
 	trimestre,
@@ -71,7 +73,8 @@ WITH VendaPais (pais, venda_total, venda_promocao) AS (
 				END) AS venda_promocao
 	FROM FactInternetSales S
 	LEFT JOIN DimSalesTerritory AS T ON S.SalesTerritoryKey = T.SalesTerritoryKey
-	GROUP BY T.SalesTerritoryCountry)
+	GROUP BY T.SalesTerritoryCountry
+)
 SELECT 
 	pais,
 	venda_promocao AS venda_promocao,
