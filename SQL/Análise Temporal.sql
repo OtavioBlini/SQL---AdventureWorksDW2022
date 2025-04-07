@@ -41,5 +41,5 @@ SELECT
 	MAX(S.SalesAmount) - MIN(S.SalesAmount) AS amplitude
 FROM FactInternetSales S
 JOIN MedianaCTE M ON YEAR(S.OrderDate) = M.Ano
-GROUP BY Ano, M.mediana
-ORDER BY Ano;
+GROUP BY ano, M.mediana
+ORDER BY ano;
