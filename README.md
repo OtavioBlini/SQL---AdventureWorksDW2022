@@ -1,5 +1,6 @@
 # Introdução
 No cenário atual, em um mundo cada vez mais digital, o e-commerce se tornou peça-chave de muitas empresas. A análise de desempenho de vendas pela internet é fundamental para empresas que busquem otimizar seus resultados.
+
 O Data Warehouse ***AdventureWorksDW2022***, disponibilizado pela Microsoft, oferece um cenário ideal para o desenvolvimento de análises estratégicas e financeiras. Ele simula um ambiente corporativo com dados de uma empresa fictícia chamada Adventure Works, que opera no setor de varejo, com foco no e-commerce e operações globais.
 
 # Objetivo
@@ -25,7 +26,7 @@ O modelo de dados do AdventureWorksDW2022, baseado na tabela FactInternetSales, 
 ![image](https://github.com/user-attachments/assets/fb3c59d7-5e17-46a7-a99f-38fec07c29c0)
 ![image](https://github.com/user-attachments/assets/2390b843-cb1f-487b-beb8-f14eb48a81a3)
 
-"Conforme constatado, os anos de 2010 e 2014 não possuem registros anuais completos, o que pode impactar análises futuras. Para garantir a consistência das análises, a abordagem adotada foi a remoção integral desses valores. No entanto, essa decisão está alinhada ao escopo proposto pelo projeto. Cada situação exige uma análise prévia e específica; neste caso, a abordagem adotada atende às necessidades imediatas, sem comprometer outras análises.
+Conforme constatado, os anos de 2010 e 2014 não possuem registros anuais completos, o que pode impactar análises futuras. Para garantir a consistência das análises, a abordagem adotada foi a remoção integral desses valores. Essa decisão está alinhada ao escopo proposto pelo projeto. Cada situação exige uma análise prévia e específica; neste caso, a abordagem adotada atende às necessidades imediatas, sem comprometer outras análises.
 
 ![image](https://github.com/user-attachments/assets/6d019de0-3ec6-4429-863c-975390573872)
 ![image](https://github.com/user-attachments/assets/ffe16b41-f817-4478-a414-c05ea080ec76)
@@ -73,7 +74,7 @@ Estados Unidos e Austrália concentram cerca de 63% das vendas da empresa. A mar
 ![image](https://github.com/user-attachments/assets/e412854d-c0d8-4b4d-b199-708f555feafa)
 ![image](https://github.com/user-attachments/assets/b1486160-1426-4043-9115-546b603e3893)
 
-Após queda nas vendas em 2012, Austrália e Estados Unidos apresentaram forte recuperação em 2013. Os EUA cresceram +280%, enquanto a Austrália teve um aumento de +103%, indicando uma possível mudança de estratégia ou expansão comercial. O padrão reforça a importância de ambos no desempenho global do e-commerce.
+Após queda nas vendas em 2012, Austrália e Estados Unidos apresentaram forte recuperação em 2013. Os EUA cresceram 280%, enquanto a Austrália teve um aumento de 104%, indicando uma possível mudança de estratégia ou expansão comercial. O padrão reforça a importância de ambos no desempenho global do e-commerce.
 
 ### Estados Unidos Trimestral
 ![image](https://github.com/user-attachments/assets/dab5d310-bc37-40e6-9886-bd79e9293582)
