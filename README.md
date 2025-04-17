@@ -24,7 +24,7 @@ O modelo de dados do AdventureWorksDW2022, baseado na tabela FactInternetSales, 
 ## [Limpeza e tratamento de Dados](https://github.com/OtavioBlini/SQL---AdventureWorksDW2022/blob/main/SQL/Tratamento%20de%20Dados.sql)
 ### Deletando Registros Incompletos de Venda
 ![image](https://github.com/user-attachments/assets/fb3c59d7-5e17-46a7-a99f-38fec07c29c0)
-![image](https://github.com/user-attachments/assets/2390b843-cb1f-487b-beb8-f14eb48a81a3)
+![image](https://github.com/user-attachments/assets/71b33e01-0d47-403b-984c-97636f1fec63)
 
 Conforme constatado, os anos de 2010 e 2014 não possuem registros anuais completos, o que pode impactar análises futuras. Para garantir a consistência das análises, a abordagem adotada foi a remoção integral desses valores. Essa decisão está alinhada ao escopo proposto pelo projeto. Cada situação exige uma análise prévia e específica; neste caso, a abordagem adotada atende às necessidades imediatas, sem comprometer outras análises.
 
